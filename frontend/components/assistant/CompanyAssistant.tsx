@@ -182,7 +182,7 @@ export function CompanyAssistant({ open, onClose, selected }: {
     const userMessageId = newMessageId();
     if (appendUser) {
       setMessages((previous) => [...previous, { id: userMessageId, role: "user", content: question }]);
-      setDraft((previous) => previous === question ? "" : previous);
+      setDraft("");
     }
     setPending(true);
     setError("");
@@ -205,7 +205,6 @@ export function CompanyAssistant({ open, onClose, selected }: {
         if (requestSequence.current === currentRequest) setConversations(recent.conversations);
       }
       if (requestSequence.current === currentRequest) {
-        setDraft((previous) => previous === question ? "" : previous);
         composerRef.current?.focus();
       }
     } catch (cause) {
